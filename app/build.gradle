@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.aplikasi.appcapstone'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.aplikasi.appcapstone"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+
+    dynamicFeatures = [':favorite']
+}
+
+dependencies {
+    implementation project(":core")
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    implementation "androidx.activity:activity-ktx:1.6.1"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+
+    // Lifecycle components
+    def lifecycleVersion = '2.5.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+
+    // Navigation components
+    def nav_version = "2.5.3"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+
+    // library dasar rxjava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
+    // library untuk memudahkan threading di Android
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    // opsional : library tambahan dengan tambahan extension function pada Kotlin
+    implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
+    // rx binding
+    implementation "com.jakewharton.rxbinding2:rxbinding:2.0.0"
+
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    // Koin Core features
+    def koin_version= "3.3.0"
+    implementation "io.insert-koin:koin-core:$koin_version"
+
+    // Koin main features for Android
+    def koin_android_version= "3.3.1"
+    implementation "io.insert-koin:koin-android:$koin_android_version"
+}
