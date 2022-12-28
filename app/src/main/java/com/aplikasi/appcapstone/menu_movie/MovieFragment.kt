@@ -19,7 +19,6 @@ class MovieFragment : Fragment() {
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
 
-    // private lateinit var movieViewModel: MovieViewModel
     private val movieViewModel: MovieViewModel by viewModel()
 
     override fun onCreateView(

@@ -1,6 +1,5 @@
 package com.aplikasi.core.data.source.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.aplikasi.core.data.source.local.entity.MovieEntity
 import com.aplikasi.core.data.source.local.entity.MovieSearchEntity
@@ -14,7 +13,7 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movie: List<MovieEntity>)
 
-    @Query("SELECT * FROM movie_search WHERE Name LIKE :search ")
+    @Query("SELECT * FROM movie_search WHERE Name LIKE '%' || :search || '%' ")
     fun getAllMovieSearch(search:String): Flow<List<MovieSearchEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

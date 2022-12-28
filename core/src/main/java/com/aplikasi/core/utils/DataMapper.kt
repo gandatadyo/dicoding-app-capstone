@@ -40,11 +40,11 @@ object DataMapper {
     fun mapEntitiesToDomain(input: List<MovieEntity>): List<Movie> =
         input.map {
             Movie(
-                idMovie = it.IDMovie.toString(),
-                description = it.Description.toString(),
-                name = it.Name.toString(),
-                image = it.Img.toString(),
-                isFavorite = it.isFavorite!!
+                idMovie = it.IDMovie,
+                description = it.Description,
+                name = it.Name,
+                image = it.Img,
+                isFavorite = it.isFavorite
             )
         }
 
@@ -52,20 +52,20 @@ object DataMapper {
     fun mapEntitiesSearchToDomain(input: List<MovieSearchEntity>): List<Movie> =
         input.map {
             Movie(
-                idMovie = it.IDMovie.toString(),
-                description = it.Description.toString(),
-                name = it.Name.toString(),
-                image = it.Img.toString(),
-                isFavorite = it.isFavorite!!
+                idMovie = it.IDMovie,
+                description = it.Description,
+                name = it.Name,
+                image = it.Img,
+                isFavorite = it.isFavorite
             )
         }
 
     fun mapDomainToEntity(input: Movie): MovieEntity =
         MovieEntity(
             IDMovie = input.idMovie,
-            Description = input.description.toString(),
-            Name = input.name.toString(),
-            Img = input.image.toString(),
-            isFavorite = input.isFavorite!!
+            Description = input.description,
+            Name = input.name,
+            Img = input.image,
+            isFavorite = input.isFavorite
         )
 }

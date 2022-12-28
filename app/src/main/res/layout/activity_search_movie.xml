@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".HomeActivity">
 
     <RelativeLayout
@@ -29,7 +30,7 @@
             android:ems="10"
             android:hint="Pencarian"
             android:inputType="textPersonName"
-            android:text="Test" />
+            android:textColor="@color/black" />
 
         <ImageButton
             android:id="@+id/btnSearch"
@@ -40,7 +41,6 @@
             android:src="@drawable/ic_baseline_search_24" />
 
     </RelativeLayout>
-
 
 
     <androidx.recyclerview.widget.RecyclerView

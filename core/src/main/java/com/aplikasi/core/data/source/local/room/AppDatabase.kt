@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.aplikasi.core.data.source.local.entity.MovieEntity
 import com.aplikasi.core.data.source.local.entity.MovieSearchEntity
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 
 @Database(entities = [
     MovieEntity::class,
@@ -21,12 +23,13 @@ abstract  class AppDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
+                val passphrase: ByteArray = SQLiteDatabase.getBytes("app-capstone".toCharArray())
+                val factory = SupportFactory(passphrase)
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    AppDatabase::class.java,
-                    "appcapstone.db"
-                )
-//                    .fallbackToDestructiveMigration()
+                    AppDatabase::class.java,"appcapstone.db"
+                )   .fallbackToDestructiveMigration()
+//                    .openHelperFactory(factory)
                     .build()
                 INSTANCE = instance
                 instance
