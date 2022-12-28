@@ -57,33 +57,4 @@ class RemoteDataSource constructor(val apiConfig: ApiConfig) {
             }
         }.flowOn(Dispatchers.IO)
     }
-
-    fun detailMovie(idMovie:String): LiveData<ApiResponse<ResponseDetailMovie>> {
-        val resultData = MutableLiveData<ApiResponse<ResponseDetailMovie>>()
-
-        apiConfig.resultObject().detailMovie(idMovie).enqueue(object : Callback<ResponseDetailMovie> {
-            override fun onResponse(call: Call<ResponseDetailMovie>, response: Response<ResponseDetailMovie>) {
-                if (response.isSuccessful) {
-                    var flagNotValid = true
-                    val dataResponse = response.body()
-                    if(dataResponse!=null){
-                        flagNotValid = false
-                        resultData.value = ApiResponse.Success(dataResponse)
-                    }
-
-                    if(flagNotValid){
-                        resultData.value = ApiResponse.Empty
-                    }
-                } else {
-                    resultData.value = ApiResponse.Error(response.errorBody().toString())
-                }
-            }
-            override fun onFailure(call: Call<ResponseDetailMovie>, t: Throwable) {
-                resultData.value = ApiResponse.Error(t.message.toString())
-            }
-        })
-
-        return resultData
-    }
-
 }

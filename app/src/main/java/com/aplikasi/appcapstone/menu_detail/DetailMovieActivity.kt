@@ -37,7 +37,7 @@ class DetailMovieActivity : AppCompatActivity() {
         }
 
         binding.btnFavorite.setOnClickListener {
-            detailMovieViewModel.setFavoriteMovie(moviem!!,true)
+            detailMovieViewModel.setFavoriteMovie(moviem!!)
         }
 
         detailMovieViewModel.movieData.observe(this){

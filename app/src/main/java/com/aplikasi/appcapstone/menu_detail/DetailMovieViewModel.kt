@@ -10,8 +10,9 @@ import com.aplikasi.core.domain.usecase.IMovieUseCase
 class DetailMovieViewModel(private val movieRepository: IMovieUseCase):ViewModel() {
     val movieData = MutableLiveData<Movie>(  )
 
-    fun setFavoriteMovie(movie: Movie, newStatus: Boolean) {
-        movieRepository.setFavoriteMovie(movie, newStatus)
+    fun setFavoriteMovie(movie: Movie) {
+        val newStatus =  !movie.isFavorite
+        movieRepository.setFavoriteMovie(movie,newStatus)
         movie.isFavorite = newStatus
         movieData.value = movie
     }
