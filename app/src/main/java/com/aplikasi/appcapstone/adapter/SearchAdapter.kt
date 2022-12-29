@@ -1,5 +1,6 @@
 package com.aplikasi.appcapstone.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ListViewHolder>() {
     private var listData = ArrayList<ResultsMovie>()
     var onItemClick: ((ResultsMovie) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<ResultsMovie>?) {
         if (newListData == null) return
         listData.clear()

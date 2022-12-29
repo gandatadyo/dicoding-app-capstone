@@ -29,7 +29,8 @@
             android:ems="10"
             android:hint="Pencarian"
             android:inputType="textPersonName"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:autofillHints="" />
 
         <ImageButton
             android:id="@+id/btnSearch"
