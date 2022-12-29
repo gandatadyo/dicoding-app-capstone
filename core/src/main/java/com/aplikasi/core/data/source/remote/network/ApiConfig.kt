@@ -13,7 +13,7 @@ class ApiConfig {
 
     fun resultObject(): ApiService {
         val certificatePinner = CertificatePinner.Builder()
-            .add(baseUrl, "sha256/ p+WeEuGncQbjSKYPSzAaKpF/iLcOjFLuZubtsXupYSI=")
+            .add("api.themoviedb.org", "sha256/p+WeEuGncQbjSKYPSzAaKpF/iLcOjFLuZubtsXupYSI=")
             .build()
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder()

@@ -23,13 +23,13 @@ abstract  class AppDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
-                val passphrase: ByteArray = SQLiteDatabase.getBytes("app-capstone".toCharArray())
+                val passphrase: ByteArray = SQLiteDatabase.getBytes("key12345".toCharArray())
                 val factory = SupportFactory(passphrase)
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    AppDatabase::class.java,"appcapstone.db"
+                    AppDatabase::class.java,"Appcapstone.db"
                 )   .fallbackToDestructiveMigration()
-//                    .openHelperFactory(factory)
+                    .openHelperFactory(factory)
                     .build()
                 INSTANCE = instance
                 instance
